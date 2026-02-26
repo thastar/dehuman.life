@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEHUMAN | Neural Integration</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Matched exactly to your index.html colors */
+            --bg: #0f172a;
+            --primary: #ffffff;
+            --accent: #6366f1;
+            --text: #f1f5f9;
+            --muted: #94a3b8;
+            --nav-border: #1e293b;
+        }
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            margin: 0; 
+            background: var(--bg); 
+            color: var(--primary); 
+            line-height: 1.8; 
+        }
+
+        /* --- UPDATED DARK HEADER --- */
+        nav { 
+            padding: 1.2rem 10%; 
+            border-bottom: 1px solid var(--nav-border); 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            background: rgba(15, 23, 42, 0.9); /* Slight transparency for effect */
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .brand-container {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            gap: 12px;
+        }
+
+        .brand-logo {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            background: #ffffff; /* White background to make the logo pop against dark nav */
+            border-radius: 4px;
+        }
+
+        .brand-name {
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: var(--primary);
+            letter-spacing: -0.05em;
+            text-transform: uppercase;
+        }
+
+        .back-link { 
+            color: var(--accent); 
+            text-decoration: none; 
+            font-weight: 700; 
+            font-size: 0.8rem; 
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: 0.3s;
+        }
+
+        .back-link:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        /* --- ARTICLE CONTENT --- */
+        .article-container { max-width: 680px; margin: 5rem auto; padding: 0 2rem; }
+        
+        .meta { 
+            color: var(--muted); 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            font-size: 0.75rem; 
+            letter-spacing: 0.1em; 
+        }
+
+        h1 { 
+            font-size: 3.5rem; 
+            font-weight: 900; 
+            line-height: 1; 
+            margin: 1rem 0 2rem; 
+            letter-spacing: -0.04em; 
+            color: var(--primary);
+        }
+
+        p { 
+            font-size: 1.15rem; 
+            margin-bottom: 2rem; 
+            color: var(--text); 
+        }
+        
+        .accent-block { 
+            border-left: 4px solid var(--accent); 
+            padding-left: 1.5rem; 
+            font-style: italic; 
+            color: var(--muted); 
+            margin: 3rem 0; 
+        }
+
+        strong {
+            color: var(--primary);
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2.5rem; }
+            nav { padding: 1rem 5%; }
+            .article-container { margin: 3rem auto; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html" class="brand-container">
+        <img src="logo.png" alt="DEHUMAN Logo" class="brand-logo">
+        <span class="brand-name">DEHUMAN</span>
+    </a>
+    
+    <a href="index.html" class="back-link">Return to Index</a>
+</nav>
+
+<main class="article-container">
+    <div class="meta">Log Entry #001 • Technology</div>
+    <h1>Neural Integration</h1>
+    
+    <p>In the year 2026, the term "user experience" has evolved. We are no longer simply looking at screens; we are participating in a biological and digital handshake.</p>
+
+    <div class="accent-block">
+        "The machine does not learn from us; it reflects us."
+    </div>
+
+    <p>This entry explores the latest shifts in neural-link protocols and what it means for the privacy of the human thought process.</p>
+
+    <p>Stay tuned as <strong>DEHUMAN</strong> continues to track these developments.</p>
+</main>
+
+</body>
+</html>

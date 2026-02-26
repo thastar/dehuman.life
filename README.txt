@@ -1,0 +1,1 @@
+Hi, I'm star. I strongly dislike injustice for animals, humans, and the lowerclass. I will do everything in my power to make this situation better. I'd rather die then not try.

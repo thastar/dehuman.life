@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #0f172a; /* Darker, more intense background */
+            --bg: #0f172a;
             --card: #1e293b;
             --primary: #ffffff;
             --accent: #6366f1;
@@ -17,26 +17,25 @@
 
         body { font-family: 'Inter', sans-serif; margin: 0; background: var(--bg); color: var(--text); line-height: 1.6; }
 
+        /* CLEANED HEADER - Navigation Links Removed */
         nav { 
             background: rgba(15, 23, 42, 0.9);
             backdrop-filter: blur(12px);
             padding: 1.5rem 10%;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            justify-content: center; /* Centered the logo for impact */
             position: sticky;
             top: 0;
             z-index: 1000;
             border-bottom: 1px solid #1e293b;
         }
         nav .logo { font-weight: 900; font-size: 1.8rem; letter-spacing: -0.05em; color: var(--primary); text-decoration: none; }
-        nav .links a { margin-left: 2rem; text-decoration: none; color: var(--muted); font-weight: 600; font-size: 0.9rem; text-transform: uppercase; transition: 0.3s; }
-        nav a:hover { color: var(--accent); }
 
-        .hero { padding: 6rem 10% 4rem; text-align: left; }
-        .hero h1 { font-size: 4rem; font-weight: 900; margin-bottom: 1rem; letter-spacing: -0.04em; color: var(--primary); }
-        .hero p { font-size: 1.25rem; color: var(--muted); max-width: 600px; }
+        .hero { padding: 8rem 10% 4rem; text-align: left; }
+        .hero h1 { font-size: 4.5rem; font-weight: 900; margin-bottom: 1.5rem; letter-spacing: -0.04em; color: var(--primary); }
+        .hero p { font-size: 1.3rem; color: var(--muted); max-width: 650px; }
 
+        /* Filter Pills */
         .category-container {
             max-width: 1200px;
             margin: 0 auto 3rem;
@@ -50,7 +49,7 @@
             background: #1e293b;
             border: 1px solid #334155;
             padding: 0.5rem 1.2rem;
-            border-radius: 4px; /* Squarer for a more technical look */
+            border-radius: 4px;
             cursor: pointer;
             font-size: 0.8rem;
             text-transform: uppercase;
@@ -65,6 +64,7 @@
             border-color: var(--accent);
         }
 
+        /* News Grid */
         .container { max-width: 1200px; margin: 0 auto 5rem; padding: 0 10%; }
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; }
         
@@ -73,67 +73,83 @@
             transition: 0.3s; border: 1px solid #334155;
         }
         .card:hover { border-color: var(--accent); transform: translateY(-4px); }
-        .card-img { height: 180px; width: 100%; opacity: 0.8; }
+        
+        /* Updated this class to handle real images better */
+        .card-img { 
+            height: 180px; 
+            width: 100%; 
+            opacity: 0.8; 
+            background-size: cover; /* Ensures the image fills the area */
+            background-position: center; /* Centers the image */
+        }
+        
         .card-body { padding: 1.5rem; }
         .card-body h3 { margin: 0 0 1rem; font-size: 1.4rem; color: var(--primary); letter-spacing: -0.02em; }
         .card-body p { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
         
-        .btn { 
-            color: var(--accent); 
-            text-decoration: none; 
-            font-weight: 700; 
-            text-transform: uppercase; 
-            font-size: 0.8rem; 
-            letter-spacing: 0.1em;
-        }
+        .btn { color: var(--accent); text-decoration: none; font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.1em; }
         .btn:hover { text-decoration: underline; }
 
-        @media (max-width: 768px) { .hero h1 { font-size: 2.8rem; } }
+        /* NEWSLETTER SECTION */
+        .newsletter {
+            background: #1e293b;
+            padding: 6rem 10%;
+            border-top: 1px solid #334155;
+            text-align: center;
+        }
+        .newsletter h2 { color: white; font-weight: 900; font-size: 2rem; margin-bottom: 1rem; }
+        .newsletter p { color: var(--muted); margin-bottom: 2rem; }
+        .newsletter-form { display: flex; gap: 10px; justify-content: center; max-width: 500px; margin: 0 auto; }
+        .newsletter input { flex: 1; padding: 1rem; border-radius: 4px; border: 1px solid #334155; background: #0f172a; color: white; outline: none; }
+        .newsletter button { background: #6366f1; color: white; padding: 1rem 2rem; border: none; border-radius: 4px; font-weight: 700; cursor: pointer; transition: 0.3s; }
+        .newsletter button:hover { background: #4f46e5; }
+
+        @media (max-width: 768px) { 
+            .hero h1 { font-size: 2.8rem; }
+            .newsletter-form { flex-direction: column; }
+        }
     </style>
 </head>
 <body>
 
 <nav>
     <a href="index.html" class="logo">DEHUMAN</a>
-    <div class="links">
-        <a href="index.html">Archives</a>
-        <a href="#categories">Categories</a>
-    </div>
 </nav>
 
 <section class="hero">
-    <h1>Raw Intelligence.</h1>
-    <p>Documenting the shift. Unfiltered analysis for the new era.</p>
+    <h1>They're lying, and blaming others.</h1>
+    <p>Everything you need to know to be a great, moral person.</p>
 </section>
 
 <div class="category-container" id="categories">
     <div class="category-pill active" onclick="filterCategory('all', this)">All</div>
-    <div class="category-pill" onclick="filterCategory('tech', this)">Technology</div>
     <div class="category-pill" onclick="filterCategory('ethics', this)">Ethics</div>
-    <div class="category-pill" onclick="filterCategory('future', this)">Future</div>
+    <div class="category-pill" onclick="filterCategory('government', this)">Government</div>
+    <div class="category-pill" onclick="filterCategory('misconceptions', this)">Misconceptions</div>
+    <div class="category-pill" onclick="filterCategory('selfhelp', this)">Self-help</div>
 </div>
 
 <div class="container">
     <div class="grid" id="news-grid">
-        <div class="card" data-category="tech">
-            <div class="card-img" style="background: linear-gradient(135deg, #1e293b, #6366f1);"></div>
-            <div class="card-body">
-                <h3>Neural Integration</h3>
-                <p>The boundary between user and interface is beginning to dissolve.</p>
-                <a href="article-1.html" class="btn">View Entry →</a>
-            </div>
-        </div>
-
         <div class="card" data-category="ethics">
-            <div class="card-img" style="background: linear-gradient(135deg, #1e293b, #f43f5e);"></div>
+            <div class="card-img" style="background-image: url('bush-image.png');"></div>
             <div class="card-body">
-                <h3>The Ghost in the Code</h3>
-                <p>Examining the moral weight of algorithmic decision-making.</p>
+                <h3>The MBR Beagle's and their legal abuse.</h3>
+                <p>Legalized abuse toward's animal's.</p>
                 <a href="article-1.html" class="btn">View Entry →</a>
             </div>
         </div>
     </div>
 </div>
+
+<section class="newsletter">
+    <h2>JOIN THE NETWORK.</h2>
+    <p>Get the latest DEHUMAN articles delivered to your inbox.</p>
+    <form class="newsletter-form">
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit">SUBSCRIBE</button>
+    </form>
+</section>
 
 <script>
     function filterCategory(category, element) {
