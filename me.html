@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEHUMAN | About Me</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --primary: #ffffff;
+            --accent: #6366f1;
+            --text: #f1f5f9;
+            --muted: #94a3b8;
+        }
+
+        body { font-family: 'Inter', sans-serif; margin: 0; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+        /* --- NAVIGATION --- */
+        nav { 
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(12px);
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        nav .logo { 
+            font-weight: 900; 
+            font-size: 1.8rem; 
+            letter-spacing: -0.05em; 
+            color: var(--primary); 
+            text-decoration: none; 
+        }
+
+        /* --- CONTENT AREA --- */
+        .content-wrapper {
+            max-width: 800px;
+            margin: 6rem auto;
+            padding: 0 10%;
+        }
+
+        .profile-header {
+            text-align: left;
+            margin-bottom: 4rem;
+        }
+
+        .profile-header h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            letter-spacing: -0.04em;
+            color: var(--primary);
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: var(--accent);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        .bio-section {
+            font-size: 1.1rem;
+            color: var(--muted);
+            margin-bottom: 3rem;
+        }
+
+        .bio-section p {
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-box {
+            background: var(--card);
+            border-left: 4px solid var(--accent);
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 3rem 0;
+        }
+
+        .highlight-box h2 {
+            margin-top: 0;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: 0.3s;
+        }
+
+        .back-link:hover {
+            color: var(--accent);
+            transform: translateX(-5px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 4rem 0;
+            border-top: 1px solid #1e293b;
+            color: var(--muted);
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            .profile-header h1 { font-size: 2.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html" class="logo">DEHUMAN</a> 
+</nav>
+
+<div class="content-wrapper">
+    <header class="profile-header">
+        <span class="tagline">Independent Observer</span>
+        <h1>It’s time to see things clearly.</h1>
+    </header>
+
+    <div class="bio-section">
+        <p>
+            Welcome to my corner of the web. I created <strong>DEHUMAN</strong> because I noticed a gap between what we are told and what is actually happening. My goal is to explore ethics, government, and the common misconceptions that keep us from being truly moral individuals.
+        </p>
+        
+        <p>
+            I believe that to be a "great person," one must first be willing to question the systems and narratives we've inherited. This site is a collection of my research, perspectives, and calls to action.
+        </p>
+    </div>
+
+    <div class="highlight-box">
+        <h2>The Core Mission</h2>
+        <p>To dismantle legalized abuse, expose institutional lies, and provide a framework for self-improvement that isn't based on corporate or political agendas.</p>
+    </div>
+
+    <div class="bio-section">
+        <p>
+            When I'm not writing for this network, I'm usually researching animal rights, legal reform, or the philosophy of self-governance. I believe transparency is the only cure for the current state of our world.
+        </p>
+    </div>
+
+    <a href="index.html" class="back-link">← Back to Articles</a>
+</div>
+
+<footer>
+    &copy; 2026 DEHUMAN. All transmissions archived.
+</footer>
+
+</body>
+</html>
