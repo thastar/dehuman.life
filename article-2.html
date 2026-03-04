@@ -3,149 +3,243 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DEHUMAN | Neural Integration</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>DEHUMAN | MBR Beagles</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,700;1,9..144,900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Matched exactly to your index.html colors */
-            --bg: #0f172a;
-            --primary: #ffffff;
-            --accent: #6366f1;
-            --text: #f1f5f9;
-            --muted: #94a3b8;
-            --nav-border: #1e293b;
+            --bg:      #0b0c0e;
+            --bg2:     #101114;
+            --card:    #13151a;
+            --border:  rgba(255,255,255,0.06);
+            --accent:  #c9f135;
+            --accent-dim: rgba(201,241,53,0.12);
+            --text:    #ede9e0;
+            --muted:   #52576a;
+            --muted2:  #878fa3;
         }
 
-        body { 
-            font-family: 'Inter', sans-serif; 
-            margin: 0; 
-            background: var(--bg); 
-            color: var(--primary); 
-            line-height: 1.8; 
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            overflow-x: hidden;
         }
 
-        /* --- UPDATED DARK HEADER --- */
-        nav { 
-            padding: 1.2rem 10%; 
-            border-bottom: 1px solid var(--nav-border); 
-            display: flex; 
-            justify-content: space-between; 
+        /* ── CURSOR ── */
+        .cursor, .cursor-dot {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+        }
+        .cursor {
+            width: 36px; height: 36px;
+            border: 1px solid rgba(201,241,53,.4);
+            transition: width .25s, height .25s, border-color .25s, opacity .3s;
+        }
+        .cursor-dot {
+            width: 5px; height: 5px;
+            background: var(--accent);
+        }
+        body.cursor-hover .cursor {
+            width: 52px; height: 52px;
+            border-color: rgba(201,241,53,.7);
+        }
+
+        /* ── NAV ── */
+        nav {
+            background: rgba(11,12,14,.82);
+            backdrop-filter: blur(18px);
+            padding: 0 5%;
+            height: 64px;
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            background: rgba(15, 23, 42, 0.9); /* Slight transparency for effect */
-            backdrop-filter: blur(12px);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
         }
 
-        .brand-container {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            gap: 12px;
-        }
-
-        .brand-logo {
-            width: 40px;
-            height: 40px;
-            object-fit: contain;
-            background: #ffffff; /* White background to make the logo pop against dark nav */
-            border-radius: 4px;
-        }
-
-        .brand-name {
+        nav .logo {
+            font-family: 'Fraunces', serif;
             font-weight: 900;
-            font-size: 1.5rem;
-            color: var(--primary);
-            letter-spacing: -0.05em;
+            font-size: 1.4rem;
+            letter-spacing: .12em;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .back-link {
+            font-family: 'DM Mono', monospace;
+            color: var(--muted2);
+            text-decoration: none;
+            font-size: .68rem;
             text-transform: uppercase;
+            letter-spacing: .1em;
+            transition: color .2s;
+        }
+        .back-link:hover { color: var(--accent); }
+
+        /* ── ARTICLE CONTENT ── */
+        .article-container {
+            max-width: 720px;
+            margin: 80px auto 120px;
+            padding: 0 10%;
         }
 
-        .back-link { 
-            color: var(--accent); 
-            text-decoration: none; 
-            font-weight: 700; 
-            font-size: 0.8rem; 
+        .meta {
+            font-family: 'DM Mono', monospace;
+            color: var(--accent);
+            font-size: 0.7rem;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            transition: 0.3s;
+            letter-spacing: 0.15em;
+            margin-bottom: 1rem;
         }
 
-        .back-link:hover {
-            color: #ffffff;
-            text-decoration: underline;
+        h1 {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 2.5rem;
+            letter-spacing: -0.02em;
+            color: var(--text);
         }
 
-        /* --- ARTICLE CONTENT --- */
-        .article-container { max-width: 680px; margin: 5rem auto; padding: 0 2rem; }
-        
-        .meta { 
-            color: var(--muted); 
-            font-weight: 700; 
-            text-transform: uppercase; 
-            font-size: 0.75rem; 
-            letter-spacing: 0.1em; 
-        }
-
-        h1 { 
-            font-size: 3.5rem; 
-            font-weight: 900; 
-            line-height: 1; 
-            margin: 1rem 0 2rem; 
-            letter-spacing: -0.04em; 
-            color: var(--primary);
-        }
-
-        p { 
-            font-size: 1.15rem; 
-            margin-bottom: 2rem; 
-            color: var(--text); 
-        }
-        
-        .accent-block { 
-            border-left: 4px solid var(--accent); 
-            padding-left: 1.5rem; 
-            font-style: italic; 
-            color: var(--muted); 
-            margin: 3rem 0; 
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: var(--muted2);
+            font-weight: 300;
         }
 
         strong {
-            color: var(--primary);
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .accent-block {
+            background: var(--card);
+            border-left: 2px solid var(--accent);
+            padding: 2rem;
+            margin: 3.5rem 0;
+            font-family: 'Fraunces', serif;
+            font-style: italic;
+            font-size: 1.25rem;
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        .image-box {
+            margin: 4rem 0;
+            border: 1px solid var(--border);
+            background: var(--card);
+            padding: 12px;
+        }
+
+        .image-box img {
+            width: 100%;
+            display: block;
+            filter: grayscale(20%);
+            transition: filter 0.5s ease;
+        }
+
+        .image-box:hover img { filter: grayscale(0%); }
+
+        .caption {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.65rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 12px;
+            text-align: center;
+        }
+
+        footer {
+            padding: 60px 0;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            font-family: 'DM Mono', monospace;
+            font-size: 0.6rem;
+            color: var(--muted);
+            letter-spacing: 0.2em;
         }
 
         @media (max-width: 600px) {
-            h1 { font-size: 2.5rem; }
-            nav { padding: 1rem 5%; }
-            .article-container { margin: 3rem auto; }
+            h1 { font-size: 2.2rem; }
+            .article-container { margin: 40px auto; }
         }
     </style>
 </head>
 <body>
 
+<div class="cursor" id="cursor"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
 <nav>
-    <a href="index.html" class="brand-container">
-        <img src="logo.png" alt="DEHUMAN Logo" class="brand-logo">
-        <span class="brand-name">DEHUMAN</span>
-    </a>
-    
+    <a href="index.html" class="logo">DEHUMAN</a>
     <a href="index.html" class="back-link">Return to Index</a>
 </nav>
 
 <main class="article-container">
-    <div class="meta">Log Entry #001 • Technology</div>
-    <h1>Neural Integration</h1>
+    <div class="meta">Log Entry #002 • Ethics</div>
+    <h1>The MBR Beagles and their <em>legal</em> abuse.</h1>
     
-    <p>In the year 2026, the term "user experience" has evolved. We are no longer simply looking at screens; we are participating in a biological and digital handshake.</p>
+    <p>This entry explores the systematic abuse of Beagle puppies occurring at an animal testing facility adjacent to Wyton.</p>
 
     <div class="accent-block">
-        "The machine does not learn from us; it reflects us."
+        "To bear witness to the puppies' cries, the smell emanating from the sheds, and the razor-wire fences hiding industrial units where dogs are confined 24/7."
     </div>
 
-    <p>This entry explores the latest shifts in neural-link protocols and what it means for the privacy of the human thought process.</p>
+    <p>Beagle puppies as young as 16 weeks are shipped from MBR Acres breeding facilities to toxicology laboratories in large white vans via the courier service <strong>IMPEX</strong>. During toxicology experiments, chemical or drug compounds are repeatedly administered, with doses regularly increased for up to 128 days.</p>
 
-    <p>Stay tuned as <strong>DEHUMAN</strong> continues to track these developments.</p>
+    <div class="image-box">
+        <img src="https://i.ibb.co/7x192j5f/Picture-6-e1759663650618.jpg" alt="MBR Acres Facility">
+        <div class="caption">Fig 1.1 — Evidence from the MBR Acres perimeter.</div>
+    </div>
+
+    <p>Administration occurs via injection, force-feeding through throat tubes, topical application to skin and eyes, or forced inhalation of chemical gases. At the conclusion of these experiments, all surviving dogs are killed to conduct autopsy reports.</p> 
+    
+    <p>There is no scientific justification for these outdated practices. Modern methods based on human biology and data modeling predict human reactions more accurately than animal testing. Despite this, facilities remain operational because the government has failed to mandate a transition.</p>
+
+    <p>On November 29, 2021, the government granted a license to MBR Acres and B&K Universal Limited. This license permits procedures for harvesting organs and draining blood—often while the animals are fully conscious—resulting in terminal bleeding.</p>
+
+    <p style="font-family: 'DM Mono'; font-size: 0.75rem; color: var(--accent); margin-top: 4rem;">DEHUMAN // SYSTEM_LOG_2026</p>
 </main>
+
+<footer>
+    DEHUMAN NETWORK // TRANSMISSION END
+</footer>
+
+<script>
+    /* Cursor Logic */
+    const cursor = document.getElementById('cursor');
+    const dot = document.getElementById('cursorDot');
+    let cx = 0, cy = 0, tx = 0, ty = 0;
+
+    document.addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY; });
+
+    (function animCursor() {
+        cx += (tx - cx) * .12;
+        cy += (ty - cy) * .12;
+        cursor.style.left = cx + 'px';
+        cursor.style.top  = cy + 'px';
+        dot.style.left = tx + 'px';
+        dot.style.top  = ty + 'px';
+        requestAnimationFrame(animCursor);
+    })();
+
+    document.querySelectorAll('a, button').forEach(el => {
+        el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+        el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+    });
+</script>
 
 </body>
 </html>

@@ -1,0 +1,7 @@
+Element,Hex Code,Purpose
+Pure Noir,#0b0c0e,Main Background (Deepest layer)
+Surface,#13151a,"Card backgrounds, search bars, and code blocks"
+Lime Accent,#c9f135,"Headlines, buttons, and the active cursor dot"
+Bone White,#ede9e0,Main body text (Easier on the eyes than pure #FFF)
+Steel Grey,#878fa3,"Secondary text, captions, and ""Return to Index"" links"
+Ink Grey,#52576a,"Muted text, borders, and timestamps"
