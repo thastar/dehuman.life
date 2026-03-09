@@ -3,228 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DEHUMAN | About Me</title>
+    <title>DEHUMAN | About</title>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,700;1,9..144,900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg:      #0b0c0e;
-            --bg2:     #101114;
-            --card:    #13151a;
-            --border:  rgba(255,255,255,0.06);
-            --accent:  #c9f135;
+            --bg: #0b0c0e;
+            --card: #13151a;
+            --border: rgba(255,255,255,0.06);
+            --accent: #c9f135;
             --accent-dim: rgba(201,241,53,0.12);
-            --text:    #ede9e0;
-            --muted:   #52576a;
-            --muted2:  #878fa3;
+            --text: #ede9e0;
+            --muted2: #878fa3;
         }
 
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            font-family: 'DM Sans', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+        body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
 
-        /* ── CURSOR (Same as Index) ── */
-        .cursor, .cursor-dot {
-            position: fixed;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
-        }
-        .cursor {
-            width: 36px; height: 36px;
-            border: 1px solid rgba(201,241,53,.4);
-            transition: width .25s, height .25s, border-color .25s, opacity .3s;
-        }
-        .cursor-dot {
-            width: 5px; height: 5px;
-            background: var(--accent);
-        }
-        body.cursor-hover .cursor {
-            width: 52px; height: 52px;
-            border-color: rgba(201,241,53,.7);
-        }
-
-        /* ── NAV ── */
+        /* ── MATCHING NAV ── */
         nav {
+            background: rgba(11,12,14,0.85);
+            backdrop-filter: blur(20px);
             padding: 0 5%;
-            height: 64px;
+            height: 80px; /* Matching the bigger logo height */
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: rgba(11,12,14,.82);
-            backdrop-filter: blur(18px);
             border-bottom: 1px solid var(--border);
         }
 
-        nav .logo {
-            font-family: 'Fraunces', serif;
-            font-weight: 900;
-            font-size: 1.55rem;
-            letter-spacing: .12em;
-            color: var(--text);
+        .logo-container {
             text-decoration: none;
-        }
-
-        /* ── CONTENT ── */
-        .content-wrapper {
-            max-width: 800px;
-            margin: 100px auto;
-            padding: 0 10%;
-            position: relative;
-        }
-
-        .tagline {
-            font-family: 'DM Mono', monospace;
-            font-size: .68rem;
-            text-transform: uppercase;
-            letter-spacing: .15em;
-            color: var(--accent);
-            margin-bottom: 16px;
-            display: block;
-        }
-
-        h1 {
-            font-family: 'Fraunces', serif;
-            font-size: clamp(40px, 6vw, 72px);
-            font-weight: 900;
-            line-height: 1;
-            letter-spacing: -.02em;
-            margin-bottom: 40px;
-        }
-
-        .bio {
-            font-size: 1.1rem;
-            color: var(--muted2);
-            font-weight: 300;
-        }
-
-        .bio p {
-            margin-bottom: 24px;
-        }
-
-        .bio strong {
-            color: var(--text);
-            font-weight: 500;
-        }
-
-        /* Highlight Box matching Card style */
-        .mission-statement {
-            background: var(--card);
-            border: 1px solid var(--border);
-            padding: 32px;
-            margin: 48px 0;
-            position: relative;
-        }
-
-        .mission-statement h2 {
-            font-family: 'Fraunces', serif;
-            font-size: 1.5rem;
-            margin-bottom: 12px;
-            color: var(--accent);
-        }
-
-        .back-link {
-            display: inline-flex;
+            display: flex;
             align-items: center;
             gap: 8px;
-            margin-top: 40px;
-            color: var(--muted2);
-            text-decoration: none;
-            font-family: 'DM Mono', monospace;
-            font-size: .68rem;
+        }
+
+        .brand-logo-img { height: 80px; width: auto; display: block; }
+
+        .logo-text {
+            font-family: 'Fraunces', serif;
+            font-weight: 900;
+            font-size: 1.8rem;
+            letter-spacing: .08em;
+            color: var(--text);
             text-transform: uppercase;
-            letter-spacing: .1em;
-            transition: color .2s, gap .2s;
         }
 
-        .back-link:hover {
-            color: var(--accent);
-            gap: 12px;
+        .back-link { 
+            font-family: 'DM Mono', monospace; 
+            color: var(--muted2); 
+            text-decoration: none; 
+            font-size: .75rem; 
+            text-transform: uppercase;
+            border: 1px solid var(--border);
+            padding: 8px 16px;
+            transition: all 0.2s;
         }
+        .back-link:hover { color: var(--accent); border-color: var(--accent); }
 
-        footer {
-            text-align: center;
-            padding: 64px 0;
-            border-top: 1px solid var(--border);
-            color: var(--muted);
-            font-family: 'DM Mono', monospace;
-            font-size: .6rem;
-            letter-spacing: .1em;
-        }
-
-        @media (max-width: 768px) {
-            .content-wrapper { margin: 60px auto; }
-            h1 { font-size: 42px; }
-        }
+        .content-container { max-width: 720px; margin: 80px auto; padding: 0 10%; }
+        h1 { font-family: 'Fraunces', serif; font-size: 3.5rem; margin-bottom: 2rem; }
+        p { font-size: 1.1rem; color: var(--muted2); margin-bottom: 1.5rem; }
     </style>
 </head>
 <body>
 
-<div class="cursor" id="cursor"></div>
-<div class="cursor-dot" id="cursorDot"></div>
-
 <nav>
-    <a href="index.html" class="logo">DEHUMAN</a>
+    <a href="index.html" class="logo-container">
+        <img src="logo.png" alt="" class="brand-logo-img" onerror="this.style.display='none'">
+        <span class="logo-text">DEHUMAN</span>
+    </a>
+    <a href="index.html" class="back-link">Return Home</a>
 </nav>
 
-<div class="content-wrapper">
-    <span class="tagline">The Purpose</span>
-    <h1>Observation without <em>distortion</em>.</h1>
-
-    <div class="bio">
-        <p>
-            I founded <strong>DEHUMAN</strong> as an independent network to document the intersection of systemic lies and moral responsibility. In a world where institutional failure is rebranded as progress, clarity is the only tool we have left.
-        </p>
-
-        <div class="mission-statement">
-            <h2>The Mission</h2>
-            <p>To provide a raw, unedited perspective on ethics, governance, and the self-governed individual. We do not seek approval; we seek the truth.</p>
-        </div>
-
-        <p>
-            The entries found on this site are the result of deep research into topics ranging from legalized animal abuse to government misconceptions. Everything you find here is designed to help you become a more moral, aware, and capable person.
-        </p>
-    </div>
-
-    <a href="index.html" class="back-link">← Return to Index</a>
-</div>
-
-<footer>
-    DEHUMAN NETWORK // EST 2026 // ALL RIGHTS RESERVED
-</footer>
-
-<script>
-    /* Cursor Logic */
-    const cursor = document.getElementById('cursor');
-    const dot = document.getElementById('cursorDot');
-    let cx = 0, cy = 0, tx = 0, ty = 0;
-
-    document.addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY; });
-
-    (function animCursor() {
-        cx += (tx - cx) * .12;
-        cy += (ty - cy) * .12;
-        cursor.style.left = cx + 'px';
-        cursor.style.top  = cy + 'px';
-        dot.style.left = tx + 'px';
-        dot.style.top  = ty + 'px';
-        requestAnimationFrame(animCursor);
-    })();
-
-    document.querySelectorAll('a, button').forEach(el => {
-        el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
-        el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
-    });
-</script>
+<main class="content-container">
+    <h1>About Me</h1>
+    <p>Documenting the shift in ethics, technology, and human perception in 2026.</p>
+</main>
 
 </body>
 </html>

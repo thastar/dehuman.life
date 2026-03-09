@@ -29,534 +29,255 @@
             overflow-x: hidden;
         }
 
-        /* ── CURSOR ── */
-        .cursor, .cursor-dot {
-            position: fixed;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
-        }
-        .cursor {
-            width: 36px; height: 36px;
-            border: 1px solid rgba(201,241,53,.4);
-            transition: width .25s, height .25s, border-color .25s, opacity .3s;
-        }
-        .cursor-dot {
-            width: 5px; height: 5px;
-            background: var(--accent);
-        }
-        body.cursor-hover .cursor {
-            width: 52px; height: 52px;
-            border-color: rgba(201,241,53,.7);
-        }
-
-        /* ── NAV ── */
+        /* ── NAV & LOGO ── */
         nav {
-            background: rgba(11,12,14,0);
-            backdrop-filter: blur(0px);
+            background: rgba(11,12,14,0.85);
+            backdrop-filter: blur(20px);
             padding: 0 5%;
-            height: 64px;
-            display: grid;
-            grid-template-columns: 1fr auto 1fr;
+            height: 92px;
+            display: flex;
+            justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid transparent;
-            transition: background .4s, backdrop-filter .4s, border-color .4s;
-        }
-        nav.stuck {
-            background: rgba(11,12,14,.82);
-            backdrop-filter: blur(18px);
-            border-color: var(--border);
+            border-bottom: 1px solid var(--border);
         }
 
-        nav .logo {
-            grid-column: 2;
-            font-family: 'Fraunces', serif;
-            font-weight: 900;
-            font-size: 1.55rem;
-            letter-spacing: .12em;
-            color: var(--text);
+        .logo-container {
             text-decoration: none;
-            opacity: 0;
-            animation: fadeDown .6s .1s ease forwards;
-        }
-
-        .nav-contact {
-            grid-column: 3;
-            justify-self: end;
             display: flex;
             align-items: center;
-            gap: 18px;
-            opacity: 0;
-            animation: fadeDown .6s .2s ease forwards;
+            gap: 4px;
+        }
+
+        .brand-logo-img {
+            height: 80px;
+            width: auto;
+            display: block;
+            /* Filter removed: Logo will now show its original colors */
+        }
+
+        .logo-text {
+            font-family: 'Fraunces', serif;
+            font-weight: 900;
+            font-size: 1.6rem;
+            letter-spacing: .08em;
+            color: var(--text);
+            text-transform: uppercase;
+            line-height: 1;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 24px;
         }
 
         .nav-email {
             color: var(--muted2);
-            font-size: .78rem;
-            font-weight: 400;
+            font-size: .75rem;
+            font-family: 'DM Mono', monospace;
             text-decoration: none;
-            letter-spacing: .01em;
             transition: color .2s;
         }
-        .nav-email:hover { color: var(--text); }
+        .nav-email:hover { color: var(--accent); }
 
         .about-btn {
-            background: transparent;
-            color: var(--muted2);
-            padding: 7px 16px;
-            border: 1px solid var(--border);
-            text-decoration: none;
-            font-size: .72rem;
-            font-weight: 600;
-            letter-spacing: .06em;
-            text-transform: uppercase;
-            transition: color .2s, border-color .2s, background .2s;
-        }
-        .about-btn:hover {
-            color: var(--accent);
-            border-color: rgba(201,241,53,.4);
             background: var(--accent-dim);
+            color: var(--accent);
+            padding: 8px 18px;
+            border: 1px solid rgba(201,241,53,0.3);
+            text-decoration: none;
+            font-size: .7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: all .2s;
         }
+        .about-btn:hover { background: var(--accent); color: var(--bg); }
 
         /* ── HERO ── */
-        .hero {
-            padding: 96px 10% 72px;
-            text-align: left;
-            position: relative;
-            overflow: hidden;
-        }
-        /* Subtle grid bg */
-        .hero::before {
-            content: '';
-            position: absolute; inset: 0;
-            background-image:
-                linear-gradient(var(--border) 1px, transparent 1px),
-                linear-gradient(90deg, var(--border) 1px, transparent 1px);
-            background-size: 52px 52px;
-            mask-image: radial-gradient(ellipse 70% 90% at 30% 50%, black 20%, transparent 80%);
-            -webkit-mask-image: radial-gradient(ellipse 70% 90% at 30% 50%, black 20%, transparent 80%);
-            pointer-events: none;
-        }
-
+        .hero { padding: 120px 10% 80px; }
         .hero h1 {
             font-family: 'Fraunces', serif;
-            font-size: clamp(46px, 7vw, 108px);
+            font-size: clamp(40px, 7vw, 96px);
             font-weight: 900;
-            line-height: .93;
+            line-height: .95;
             letter-spacing: -.02em;
             color: var(--text);
-            max-width: 860px;
-            opacity: 0;
-            transform: translateY(32px);
-            animation: fadeUp .9s .15s cubic-bezier(.16,1,.3,1) forwards;
+            max-width: 900px;
         }
-        .hero h1 em {
-            font-style: italic;
-            color: var(--accent);
-        }
-
+        .hero h1 em { font-style: italic; color: var(--accent); }
         .hero p {
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             color: var(--muted2);
             max-width: 520px;
             margin-top: 24px;
             font-weight: 300;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeUp .8s .35s cubic-bezier(.16,1,.3,1) forwards;
         }
 
-        /* ── SEARCH ── */
-        .search-container {
+        /* ── CONTROLS ── */
+        .controls-container {
             max-width: 1200px;
-            margin: 0 auto 0;
-            padding: 48px 10% 0;
-            opacity: 0;
-            transform: translateY(16px);
-            animation: fadeUp .7s .5s ease forwards;
+            margin: 0 auto;
+            padding: 0 10% 60px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
         }
-        .search-wrapper {
-            position: relative;
-            max-width: 560px;
-        }
+        .search-wrapper { position: relative; width: 100%; }
         .search-wrapper::before {
             content: '';
             position: absolute;
-            left: 14px; top: 50%;
+            left: 20px; top: 50%;
             transform: translateY(-50%);
-            width: 16px; height: 16px;
+            width: 18px; height: 18px;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2352576a' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
-            pointer-events: none;
+            opacity: 0.6;
         }
         .search-input {
             width: 100%;
-            padding: 13px 16px 13px 42px;
+            padding: 18px 20px 18px 54px;
             background: var(--card);
             border: 1px solid var(--border);
             color: var(--text);
-            font-family: 'DM Sans', sans-serif;
-            font-size: .88rem;
+            font-size: 0.95rem;
             outline: none;
-            transition: border-color .25s, box-shadow .25s;
-            -webkit-appearance: none;
+            transition: border-color 0.3s;
         }
-        .search-input::placeholder { color: var(--muted); }
-        .search-input:focus {
-            border-color: rgba(201,241,53,.35);
-            box-shadow: 0 0 0 3px rgba(201,241,53,.06);
-        }
+        .search-input:focus { border-color: var(--accent); }
 
-        /* ── CATEGORIES ── */
-        .category-container {
-            max-width: 1200px;
-            margin: 0 auto 40px;
-            padding: 16px 10% 0;
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            opacity: 0;
-            animation: fadeUp .7s .6s ease forwards;
-        }
+        .category-container { display: flex; gap: 8px; flex-wrap: wrap; }
         .category-pill {
-            background: transparent;
             border: 1px solid var(--border);
             padding: 7px 16px;
             cursor: pointer;
             font-family: 'DM Mono', monospace;
-            font-size: .68rem;
+            font-size: .65rem;
             text-transform: uppercase;
-            letter-spacing: .1em;
             color: var(--muted2);
-            transition: all .22s;
-            position: relative;
-            overflow: hidden;
+            transition: all .2s;
         }
-        .category-pill::after {
-            content: '';
-            position: absolute; inset: 0;
-            background: var(--accent);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform .22s cubic-bezier(.77,0,.18,1);
-            z-index: 0;
-        }
-        .category-pill span { position: relative; z-index: 1; }
-        .category-pill:hover, .category-pill.active {
-            color: var(--bg);
-            border-color: var(--accent);
-        }
-        .category-pill:hover::after, .category-pill.active::after {
-            transform: scaleX(1);
-        }
+        .category-pill.active, .category-pill:hover { background: var(--accent); color: var(--bg); border-color: var(--accent); }
 
         /* ── GRID ── */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto 10rem;
-            padding: 0 10%;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1px;
-            background: var(--border);
-        }
-
-        /* ── CARD ── */
+        .container { max-width: 1200px; margin: 0 auto 10rem; padding: 0 10%; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 48px; }
         .card {
             background: var(--card);
-            overflow: hidden;
-            border: none;
-            transition: background .3s;
-            opacity: 0;
-            transform: translateY(24px);
-            animation: fadeUp .7s .7s cubic-bezier(.16,1,.3,1) forwards;
+            border: 1px solid var(--border);
+            transition: transform .3s, border-color .3s;
+            cursor: pointer;
         }
-        .card:hover { background: #161820; }
-
-        .card-img {
-            height: 190px;
-            width: 100%;
-            background-size: cover;
-            background-position: center;
-            background-color: #1a1d25;
-            position: relative;
-            overflow: hidden;
-        }
-        /* Zoom on hover */
-        .card-img::before {
-            content: '';
-            position: absolute; inset: 0;
-            background-size: cover;
-            background-position: center;
-            background-image: inherit;
-            transition: transform .6s cubic-bezier(.16,1,.3,1);
-        }
-        .card:hover .card-img { }
+        .card:hover { border-color: rgba(201,241,53, 0.4); transform: translateY(-6px); }
+        .card-img { height: 220px; overflow: hidden; }
         .card-img-zoom {
             width: 100%; height: 100%;
             background-size: cover;
             background-position: center;
-            transition: transform .6s cubic-bezier(.16,1,.3,1);
+            transition: transform .8s cubic-bezier(.16,1,.3,1);
         }
-        .card:hover .card-img-zoom { transform: scale(1.06); }
-        /* Fallback pattern when no image */
-        .card-img-fallback {
-            width: 100%; height: 100%;
-            background: linear-gradient(135deg, #141720 0%, #1c2030 100%);
-            display: flex; align-items: center; justify-content: center;
-            position: relative;
-        }
-        .card-img-fallback svg { opacity: .06; position: absolute; inset: 0; width: 100%; height: 100%; }
-        .card-img-gradient {
-            position: absolute; inset: 0;
-            background: linear-gradient(to bottom, transparent 50%, var(--card) 100%);
-            pointer-events: none;
-        }
-        .card:hover .card-img-gradient { opacity: .5; }
+        .card:hover .card-img-zoom { transform: scale(1.1); }
+        .card-body { padding: 32px; }
+        .card-body h3 { font-family: 'Fraunces', serif; font-size: 1.4rem; margin-bottom: 12px; }
+        .card:hover h3 { color: var(--accent); }
+        .card-body p { color: var(--muted2); font-size: .95rem; margin-bottom: 24px; font-weight: 300; }
+        .btn { font-family: 'DM Mono', monospace; font-size: .7rem; color: var(--muted2); }
 
-        .card-body { padding: 22px 24px 28px; }
-        .card-body h3 {
-            font-family: 'Fraunces', serif;
-            font-size: 1.22rem;
-            font-weight: 700;
-            line-height: 1.22;
-            margin-bottom: 8px;
-            color: var(--text);
-            transition: color .2s;
-        }
-        .card:hover .card-body h3 { color: var(--accent); }
-        .card-body p {
-            color: var(--muted2);
-            font-size: .83rem;
-            line-height: 1.65;
-            margin-bottom: 20px;
-            font-weight: 300;
-        }
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            color: var(--muted2) !important;
-            text-decoration: none !important;
-            font-family: 'DM Mono', monospace;
-            font-size: .68rem;
-            letter-spacing: .12em;
-            font-weight: 400;
-            transition: color .2s, gap .2s;
-        }
-        .btn::after {
-            content: '→';
-            display: inline-block;
-            transition: transform .2s;
-        }
-        .card:hover .btn { color: var(--accent) !important; gap: 10px; }
-        .card:hover .btn::after { transform: translateX(4px); }
-
-        /* ── NEWSLETTER ── */
+        /* ── FOOTER ── */
         .newsletter-redirect {
             background: var(--bg2);
-            padding: 96px 10%;
+            padding: 100px 10%;
             border-top: 1px solid var(--border);
             text-align: center;
-            position: relative;
-            overflow: hidden;
         }
-        .newsletter-redirect::before {
-            content: 'NETWORK';
-            position: absolute;
-            left: 50%; top: 50%;
-            transform: translate(-50%, -50%);
-            font-family: 'Fraunces', serif;
-            font-size: clamp(80px, 18vw, 240px);
-            font-weight: 900;
-            color: transparent;
-            -webkit-text-stroke: 1px rgba(201,241,53,.04);
-            white-space: nowrap;
-            pointer-events: none;
-            letter-spacing: .06em;
-        }
-        .newsletter-redirect h2 {
-            font-family: 'Fraunces', serif;
-            font-size: clamp(32px, 5vw, 64px);
-            font-weight: 900;
-            letter-spacing: -.02em;
-            line-height: 1;
-            margin-bottom: 16px;
-            position: relative;
-        }
-        .newsletter-redirect p {
-            color: var(--muted2);
-            font-size: .95rem;
-            font-weight: 300;
-            margin-bottom: 36px;
-            position: relative;
-        }
+        .newsletter-redirect h2 { font-family: 'Fraunces', serif; font-size: 2.5rem; margin-bottom: 24px; }
         .redirect-btn {
             display: inline-block;
             background: var(--accent);
-            color: var(--bg) !important;
-            padding: 14px 36px;
+            color: var(--bg);
+            padding: 16px 48px;
             text-decoration: none;
             font-family: 'DM Mono', monospace;
-            font-weight: 400;
-            font-size: .75rem;
-            letter-spacing: .15em;
+            font-weight: 700;
             text-transform: uppercase;
-            transition: background .2s, transform .2s, padding .25s;
-            position: relative;
-        }
-        .redirect-btn:hover {
-            background: #d9ff5a;
-            transform: translateY(-2px);
-            padding: 14px 44px;
+            transition: transform .2s;
         }
 
-        /* ── KEYFRAMES ── */
-        @keyframes fadeUp {
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeDown {
-            from { opacity: 0; transform: translateY(-10px); }
-            to   { opacity: 1; transform: none; }
-        }
-
-        /* Scroll-triggered reveals */
-        .reveal {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity .65s cubic-bezier(.16,1,.3,1), transform .65s cubic-bezier(.16,1,.3,1);
-        }
-        .reveal.in { opacity: 1; transform: none; }
-
-        /* ── RESPONSIVE ── */
         @media (max-width: 900px) {
-            nav {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                height: auto;
-                padding: 14px 5%;
-                gap: 12px;
-            }
-            .nav-contact { justify-content: center; }
-            .hero { padding: 72px 6% 56px; }
-            .hero h1 { font-size: clamp(38px, 10vw, 72px); }
-            .search-container, .category-container, .container { padding-left: 6%; padding-right: 6%; }
-            .newsletter-redirect { padding: 64px 6%; }
+            .nav-email { display: none; }
+            .hero { padding: 80px 10% 40px; }
         }
     </style>
 </head>
 <body>
 
-<!-- Cursor -->
-<div class="cursor" id="cursor"></div>
-<div class="cursor-dot" id="cursorDot"></div>
-
-<!-- NAV -->
 <nav id="nav">
-    <div></div>
-
-    <a href="index.html" class="logo">DEHUMAN</a>
-
-    <div class="nav-contact">
+    <a href="index.html" class="logo-container">
+        <img src="logo.png" alt="" class="brand-logo-img" onerror="this.style.display='none'">
+        <span class="logo-text">DEHUMAN</span>
+    </a>
+    
+    <div class="nav-right">
         <a href="mailto:DehumanOfficial@outlook.com" class="nav-email">DehumanOfficial@outlook.com</a>
         <a href="me.html" class="about-btn">About Me</a>
     </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
     <h1>They're <em>lying</em>, and blaming others.</h1>
     <p>Everything you need to know to be a great, moral person.</p>
 </section>
 
-<!-- SEARCH -->
-<div class="search-container">
+<div class="controls-container">
     <div class="search-wrapper">
         <input type="text" id="articleSearch" class="search-input" placeholder="Search entries..." onkeyup="filterArticles()">
     </div>
+    <div class="category-container" id="categories">
+        <div class="category-pill active" onclick="filterCategory('all', this)">All</div>
+        <div class="category-pill" onclick="filterCategory('ethics', this)">Ethics</div>
+        <div class="category-pill" onclick="filterCategory('government', this)">Government</div>
+        <div class="category-pill" onclick="filterCategory('misconceptions', this)">Misconceptions</div>
+        <div class="category-pill" onclick="filterCategory('selfhelp', this)">Self-help</div>
+    </div>
 </div>
 
-<!-- CATEGORIES -->
-<div class="category-container" id="categories">
-    <div class="category-pill active" onclick="filterCategory('all', this)"><span>All</span></div>
-    <div class="category-pill" onclick="filterCategory('ethics', this)"><span>Ethics</span></div>
-    <div class="category-pill" onclick="filterCategory('government', this)"><span>Government</span></div>
-    <div class="category-pill" onclick="filterCategory('misconceptions', this)"><span>Misconceptions</span></div>
-    <div class="category-pill" onclick="filterCategory('selfhelp', this)"><span>Self-help</span></div>
-</div>
-
-<!-- ARTICLES -->
 <div class="container">
     <div class="grid" id="news-grid">
-        <div class="card" data-category="ethics">
+        <div class="card" data-category="ethics" onclick="window.location.href='article-1.html'">
             <div class="card-img">
-                <div class="card-img-zoom" style="background-image: url('bush-image.png'); background-color: #1a1d25;">
-                    <!-- fallback pattern if image missing -->
-                </div>
-                <div class="card-img-gradient"></div>
+                <div class="card-img-zoom" style="background-image: url('bush-image.png');"></div>
             </div>
             <div class="card-body">
-                <h3>The MBR Beagle's and their legal abuse.</h3>
-                <p>Legalized abuse toward's animal's.</p>
-                <a href="article-1.html" class="btn" style="color: var(--muted2); text-decoration: none; font-weight: 400; font-size: 0.68rem;">VIEW ENTRY</a>
+                <h3>Why the UK, LOVES jews and genocide!!!</h3>
+                <p>Exploring the uks deep love for genocide and israel.</p>
+                <span class="btn">VIEW ENTRY →</span>
+            </div>
+        </div>
+
+        <div class="card" data-category="government" onclick="window.location.href='article-2.html'">
+            <div class="card-img">
+                <div class="card-img-zoom" style="background-image: url('viet.webp');"></div>
+            </div>
+            <div class="card-body">
+                <h3>Lentl kills and eats babies on epsteins island</h3>
+                <p>A deep dive into how lentl eats babies with jeffery einstein.</p>
+                <span class="btn">VIEW ENTRY →</span>
             </div>
         </div>
     </div>
 </div>
 
-<!-- NEWSLETTER -->
-<section class="newsletter-redirect reveal" id="newsletter">
+<section class="newsletter-redirect">
     <h2>JOIN THE NETWORK.</h2>
     <p>Subscribe to the DEHUMAN newsletter for the latest articles.</p>
+    <br>
     <a href="https://thastar.getform.com/do70z" class="redirect-btn">Newsletter</a>
 </section>
 
 <script>
-    /* ── Cursor ── */
-    const cursor = document.getElementById('cursor');
-    const dot = document.getElementById('cursorDot');
-    let cx = 0, cy = 0, tx = 0, ty = 0;
-
-    document.addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY; });
-
-    (function animCursor() {
-        cx += (tx - cx) * .12;
-        cy += (ty - cy) * .12;
-        cursor.style.left = cx + 'px';
-        cursor.style.top  = cy + 'px';
-        dot.style.left = tx + 'px';
-        dot.style.top  = ty + 'px';
-        requestAnimationFrame(animCursor);
-    })();
-
-    document.querySelectorAll('a, button, .category-pill, .about-btn').forEach(el => {
-        el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
-        el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
-    });
-
-    /* ── Sticky nav ── */
-    window.addEventListener('scroll', () => {
-        document.getElementById('nav').classList.toggle('stuck', scrollY > 40);
-    });
-
-    /* ── Scroll reveal ── */
-    const ro = new IntersectionObserver(entries => {
-        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
-
-    /* ── Filter logic (unchanged from original) ── */
-    let currentCategory = 'all';
-
     function filterCategory(category, element) {
-        currentCategory = category;
         document.querySelectorAll('.category-pill').forEach(pill => pill.classList.remove('active'));
         element.classList.add('active');
         filterArticles();
@@ -564,14 +285,15 @@
 
     function filterArticles() {
         const query = document.getElementById('articleSearch').value.toLowerCase();
+        const activePill = document.querySelector('.category-pill.active').innerText.toLowerCase();
         const cards = document.querySelectorAll('.card');
+        
         cards.forEach(card => {
-            const title    = card.querySelector('h3').innerText.toLowerCase();
-            const desc     = card.querySelector('p').innerText.toLowerCase();
-            const category = card.getAttribute('data-category');
-            const matchesCategory = (currentCategory === 'all' || category === currentCategory);
-            const matchesSearch   = (title.includes(query) || desc.includes(query));
-            card.style.display = (matchesCategory && matchesSearch) ? 'block' : 'none';
+            const title = card.querySelector('h3').innerText.toLowerCase();
+            const cardCat = card.getAttribute('data-category');
+            const matchesCat = (activePill === 'all' || cardCat === activePill);
+            const matchesSearch = title.includes(query);
+            card.style.display = (matchesCat && matchesSearch) ? 'block' : 'none';
         });
     }
 </script>
