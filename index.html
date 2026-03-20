@@ -53,9 +53,9 @@
 
         .brand-logo-img {
             height: 80px;
-            width: auto;
+            width: 80px; /* Set fixed width to prevent layout shift during GIF swap */
             display: block;
-            /* Filter removed: Logo will now show its original colors */
+            object-fit: contain;
         }
 
         .logo-text {
@@ -215,7 +215,7 @@
 
 <nav id="nav">
     <a href="index.html" class="logo-container">
-        <img src="logo.png" alt="" class="brand-logo-img" onerror="this.style.display='none'">
+        <img src="logo-static.png" alt="" class="brand-logo-img">
         <span class="logo-text">DEHUMAN</span>
     </a>
     
@@ -245,24 +245,24 @@
 
 <div class="container">
     <div class="grid" id="news-grid">
-        <div class="card" data-category="ethics" onclick="window.location.href='article-1.html'">
-            <div class="card-img">
-                <div class="card-img-zoom" style="background-image: url('bush-image.png');"></div>
-            </div>
-            <div class="card-body">
-                <h3>Why the UK, LOVES jews and genocide!!!</h3>
-                <p>Exploring the uks deep love for genocide and israel.</p>
-                <span class="btn">VIEW ENTRY →</span>
-            </div>
-        </div>
-
-        <div class="card" data-category="government" onclick="window.location.href='article-2.html'">
+        <div class="card" data-category="ethics" onclick="window.location.href='article-2.html'">
             <div class="card-img">
                 <div class="card-img-zoom" style="background-image: url('viet.webp');"></div>
             </div>
             <div class="card-body">
-                <h3>Lentl kills and eats babies on epsteins island</h3>
-                <p>A deep dive into how lentl eats babies with jeffery einstein.</p>
+                <h3>Lentl confirmed to be epsteins bestfriend behind trump</h3>
+                <p>Videos come out of lentl touching kids.</p>
+                <span class="btn">VIEW ENTRY →</span>
+            </div>
+        </div>
+
+        <div class="card" data-category="government" onclick="window.location.href='article-1.html'">
+            <div class="card-img">
+                <div class="card-img-zoom" style="background-image: url('bush-image.png');"></div>
+            </div>
+            <div class="card-body">
+                <h3>The jews LOVE the uk</h3>
+                <p>shish ka bob</p>
                 <span class="btn">VIEW ENTRY →</span>
             </div>
         </div>
@@ -277,6 +277,7 @@
 </section>
 
 <script>
+    /* --- ARTICLE FILTERING LOGIC --- */
     function filterCategory(category, element) {
         document.querySelectorAll('.category-pill').forEach(pill => pill.classList.remove('active'));
         element.classList.add('active');
@@ -296,6 +297,33 @@
             card.style.display = (matchesCat && matchesSearch) ? 'block' : 'none';
         });
     }
+
+    /* --- LOGO ANIMATION LOGIC --- */
+    const logoImg = document.querySelector('.brand-logo-img');
+    const staticSrc = 'logo-static.png'; 
+    const activeSrc = 'logo.gif';        
+
+    function triggerGif() {
+        if (!logoImg) return;
+
+        // Switch to GIF with cache-buster timestamp
+        logoImg.src = activeSrc + "?t=" + new Date().getTime();
+
+        const gifDuration = 2000; // Duration of your GIF in ms
+
+        setTimeout(() => {
+            // Switch back to static image
+            logoImg.src = staticSrc;
+
+            // Random delay between 3 and 10 seconds
+            const nextPlay = Math.floor(Math.random() * (10000 - 3000 + 1)) + 3000;
+            setTimeout(triggerGif, nextPlay);
+            
+        }, gifDuration);
+    }
+
+    // Start the cycle on page load
+    window.addEventListener('load', triggerGif);
 </script>
 
 </body>
