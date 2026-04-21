@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"> 
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DEHUMAN | Perspectives</title>
+    <title>DEHUMAN</title>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,700;1,9..144,900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -54,7 +54,7 @@
 
         .brand-logo-img {
             height: 80px;
-            width: 80px; /* Set fixed width to prevent layout shift during GIF swap */
+            width: 80px; 
             display: block;
             object-fit: contain;
         }
@@ -227,8 +227,8 @@
 </nav>
 
 <section class="hero">
-    <h1>They're <em>LYING</em>, to your FACE.</h1>
-    <p>Please, make yourself at home!</p>
+    <h1 id="hero-quote">"<em>Hatred</em> is becoming too normalised to not be deemed dangerous."</h1>
+    <p>Will you survive in a world full of greed?</p>
 </section>
 
 <div class="controls-container">
@@ -251,8 +251,8 @@
                 <div class="card-img-zoom" style="background-image: url('bush-image.png');"></div>
             </div>
             <div class="card-body">
-                <h3>The UK's Unwavering Support for Zionists.</h3>
-                <p>Israel is using the UK's money to commit genocide.</p>
+                <h3>The UK's Unwavering Support for zinist.</h3>
+                <p>isreal is using the UK's money to commit genocide.</p>
                 <span class="btn">VIEW ENTRY →</span>
             </div>
         </div>
@@ -267,6 +267,23 @@
 </section>
 
 <script>
+    /* --- QUOTE RANDOMIZER LOGIC --- */
+    const quotes = [
+        "\"Would you sell a gun to a killer?\"",
+        "\"Would you sell a gun to a killer?\"",
+        "\"Would you sell a gun to a killer?\"",
+        "\"Would you sell a gun to a killer?\"",
+        "\"Would you sell a gun to a killer?\""
+    ];
+
+    function randomizeQuote() {
+        const quoteElement = document.getElementById('hero-quote');
+        if (quoteElement) {
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            quoteElement.innerHTML = quotes[randomIndex];
+        }
+    }
+
     /* --- ARTICLE FILTERING LOGIC --- */
     function filterCategory(category, element) {
         document.querySelectorAll('.category-pill').forEach(pill => pill.classList.remove('active'));
@@ -291,29 +308,25 @@
     /* --- LOGO ANIMATION LOGIC --- */
     const logoImg = document.querySelector('.brand-logo-img');
     const staticSrc = 'logo-static.png'; 
-    const activeSrc = 'logo.gif';        
+    const activeSrc = 'logo.gif';         
 
     function triggerGif() {
         if (!logoImg) return;
-
-        // Switch to GIF with cache-buster timestamp
         logoImg.src = activeSrc + "?t=" + new Date().getTime();
-
-        const gifDuration = 2000; // Duration of your GIF in ms
+        const gifDuration = 2000; 
 
         setTimeout(() => {
-            // Switch back to static image
             logoImg.src = staticSrc;
-
-            // Random delay between 3 and 10 seconds
             const nextPlay = Math.floor(Math.random() * (10000 - 3000 + 1)) + 3000;
             setTimeout(triggerGif, nextPlay);
-            
         }, gifDuration);
     }
 
-    // Start the cycle on page load
-    window.addEventListener('load', triggerGif);
+    // Initialize all functions on load
+    window.addEventListener('load', () => {
+        randomizeQuote();
+        triggerGif();
+    });
 </script>
 
 </body>
